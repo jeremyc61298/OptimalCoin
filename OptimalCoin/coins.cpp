@@ -1,5 +1,5 @@
 // ------------------------------
-// optimal.cpp
+// coins.cpp
 // Jeremy Campbell
 // Description ...
 // ------------------------------
@@ -15,13 +15,13 @@ using std::ofstream;
 
 int main()
 {
-	ifstream fin("optimal.in");
+	ifstream fin("coins.in");
 	if (!fin.is_open())
 	{
 		cerr << "Failed to open necessary files. " << endl;
 		return -1;
 	}
-	ofstream fout("optimal.out");
+	ofstream fout("coins.out");
 
 
 }

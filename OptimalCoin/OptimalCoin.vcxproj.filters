@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="optimal.cpp">
+    <ClCompile Include="coins.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
