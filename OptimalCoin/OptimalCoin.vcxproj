@@ -149,6 +149,9 @@
   <ItemGroup>
     <ClCompile Include="coins.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="coins.in" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

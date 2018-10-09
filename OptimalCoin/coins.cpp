@@ -19,9 +19,31 @@ using std::string;
 using std::stringstream;
 using std::vector;
 
-void readCoins(stringstream &s, const int numCoins, vector<int> &coins)
+void readCoins(stringstream &s, const int numCoins, vector<unsigned short> &coins)
 {
+	for (int i = 0; i < numCoins; i++)
+	{
+		s >> coins[i];
+	}
+}
 
+int findMaxScore(vector<unsigned short> &coins)
+{
+	int maxScore = 0;
+	
+	
+	return maxScore;
+}
+
+int playCoins(string line)
+{
+	stringstream s(line);
+	int numCoins;
+	s >> numCoins;
+
+	vector<unsigned short> coins(numCoins);
+	readCoins(s, numCoins, coins);
+	return findMaxScore(coins);
 }
 
 int main()
@@ -38,15 +60,14 @@ int main()
 	// and check whether numCoins is 0
 	string line;
 	getline(fin, line);
-	stringstream s(line);
-	int numCoins;
-	s >> numCoins;
-
-	while (numCoins != 0)
+	
+	while (line[0] != '0')
 	{
-		vector<int> coins(numCoins);
-		readCoins(s, numCoins, coins);
+		int maxScore = playCoins(line);
+		fout << maxScore;
 
-		
+		getline(fin, line);
+		if (line[0] != '0')
+			cout << endl;
 	}
 }
