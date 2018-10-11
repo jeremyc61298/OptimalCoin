@@ -2,7 +2,7 @@
 // coins.cpp
 // Jeremy Campbell
 // Practices usage of Dynamic programming through a coin game.
-// The game is played by two opponents with a set of coins. Each 
+// The game is played by two opponents with an even set of coins. Each 
 // opponent may take one coin off of either the left or right of the 
 // line of coins. To win, you must have the highest total value. 
 // This program seeks to find the highest possible score you can 
@@ -27,6 +27,20 @@ using std::vector;
 using std::max;
 using std::min;
 
+void printScores(vector<vector<int>> &scores)
+{
+	cout << "Scores :" << endl;
+	for (vector<int> row : scores)
+	{
+		for (int score : row)
+		{
+			cout << score << " ";
+		}
+		cout << endl;
+	}
+	cout << "End scores." << endl;
+}
+
 void readCoins(stringstream &s, const int numCoins, vector<unsigned short> &coins)
 {
 	for (int i = 0; i < numCoins; i++)
@@ -42,7 +56,7 @@ int findMaxScore(vector<unsigned short> &coins)
 	
 	for (int diag = 0; diag < coins.size(); ++diag)
 	{
-		for (int row = 0; row < coins.size() - (diag + 1); row++)
+		for (int row = 0; row <= coins.size() - (diag + 1); row++)
 		{
 			// If it's the first diagonal, populate it with the coins vector
 			if (diag == 0)
@@ -55,7 +69,7 @@ int findMaxScore(vector<unsigned short> &coins)
 
 				// Choice 1: you select the left coin in the sub problem (represented by coins[row])
 				int option1 = scores[row + 1][col - 1]; // Best possible score if opponent takes right coin
-				int option2 = scores[row - 2][col];		// Best possible score if opponent takes new left coin
+				int option2 = scores[row + 2][col];		// Best possible score if opponent takes new left coin
 				int choice1 = coins[row] + min(option1, option2);
 
 				// Choice 2: you select the right coin in the sub problem (represented by coins[col])
@@ -67,6 +81,11 @@ int findMaxScore(vector<unsigned short> &coins)
 			}
 		}
 	}
+
+#ifdef DEBUG
+	printScores(scores);
+#endif
+
 	maxScore = scores[0][coins.size() - 1];
 	return maxScore;
 }

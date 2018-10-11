@@ -23,5 +23,8 @@
     <None Include="coins.in">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="coins.out">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
